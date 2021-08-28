@@ -1,6 +1,7 @@
-import React from 'react'
-import { ListDataProps } from '../../types'
-import './countriestable.scss'
+import React, { useEffect } from 'react';
+import useStadistics from '../../hooks/useStadistics';
+// import { ListDataProps } from '../../types';
+import './countriestable.scss';
 
 const ListHeader = (): JSX.Element => (
 	<div className='row'>
@@ -20,50 +21,62 @@ const ListHeader = (): JSX.Element => (
 			<p>Last Updated</p>
 		</div>
 	</div>
-)
+);
 
-const ListData = ({ continent, country }: ListDataProps): JSX.Element => (
-	<>
-		<div className='row'>
-			<div className='col-12'>
-				<p>
-					<b>North and Central America</b>
-				</p>
-			</div>
-		</div>
+// const ListData = ({ continent, country }: ListDataProps): JSX.Element => (
+// 	<>
+// 		<div className='row'>
+// 			<div className='col-12'>
+// 				<p>
+// 					<b>North and Central America</b>
+// 				</p>
+// 			</div>
+// 		</div>
 
-		<div className='row'>
-			<div className='col-12 col-lg-3'>
-				<p>USA</p>
-			</div>
+// 		<div className='row'>
+// 			<div className='col-12 col-lg-3'>
+// 				<p>USA</p>
+// 			</div>
 
-			<div className='col-12 col-lg-3'>
-				<p>3991255221</p>
-			</div>
+// 			<div className='col-12 col-lg-3'>
+// 				<p>3991255221</p>
+// 			</div>
 
-			<div className='col-12 col-lg-3'>
-				<p>36555645646</p>
-			</div>
+// 			<div className='col-12 col-lg-3'>
+// 				<p>36555645646</p>
+// 			</div>
 
-			<div className='col-12 col-lg-3'>
-				<p>27/08/2021 184856</p>
-			</div>
-		</div>
-	</>
-)
+// 			<div className='col-12 col-lg-3'>
+// 				<p>27/08/2021 184856</p>
+// 			</div>
+// 		</div>
+// 	</>
+// );
 
-const CountriesTable = (): JSX.Element => (
-	<div className='countries-list'>
-		<div className='container'>
-			<div className='row'>
-				<div className='col-12 list-bg'>
-					<ListHeader />
+const CountriesTable = () => {
+	const { fetchData, data } = useStadistics();
 
-					<ListData />
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	useEffect(() => {
+		console.log(data);
+	}, [data]);
+
+	return (
+		<div className='countries-list'>
+			<div className='container'>
+				<div className='row'>
+					<div className='col-12 list-bg'>
+						<ListHeader />
+
+						<h1>{data?.results}</h1>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-)
+	);
+};
 
-export default CountriesTable
+export default CountriesTable;
