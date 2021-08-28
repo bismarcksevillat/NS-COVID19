@@ -1,0 +1,11 @@
+@import './general.scss';
+
+.countries-list {
+	.list-bg {
+		background-color: rgba($black, 0.2);
+
+		p {
+			color: $white;
+		}
+	}
+}

@@ -8,7 +8,7 @@ const Sidebar = () => (
 		<div className='sidebar-content d-flex flex-row justify-content-between align-items-center flex-md-column'>
 			<div className='logo-container'>
 				<a href='/' target='_self' title='Covid icon'>
-					<img src={logo} className='img-fluid' alt='Imagen' />
+					<img src={logo} className='img-fluid' alt='Covid icon' />
 				</a>
 			</div>
 
