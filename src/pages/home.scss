@@ -1,0 +1,10 @@
+.home-page {
+	position: relative;
+
+	@media(min-width: 768px){
+		.right-column{
+			float: left;
+			padding-left: 120px;
+		}
+	}
+}

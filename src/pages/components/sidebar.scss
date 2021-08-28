@@ -1,15 +1,67 @@
 @import './general.scss';
 
-.sidebar {
-	background: $primary-color;
-}
+header {
+	background-color: $secondary-color;
+	position: relative;
 
-.sidebar-content{
-	position: absolute;
-	left: 0px;
-	width: 100px;
-	right: auto;
-	top: 0px;
-	bottom: 0px;
-	background-color: blue;
+	.sidebar-content {
+		padding: 10px 20px;
+		text-align: center;
+
+		.navbar {
+			padding: 0px;
+
+			ul {
+				padding: 0px;
+				margin: 0px;
+
+				li {
+					position: relative;
+
+					&.active {
+						&:after {
+							content: '';
+							background: url('../img/active.png') no-repeat center center;
+							width: 22px;
+							height: 104px;
+							position: absolute;
+							bottom: -68.5px;
+							top: auto;
+							right: 0px;
+							left: 0px;
+							transform: rotate(90deg);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+		position: fixed;
+		left: 0px;
+		right: auto;
+		top: 0px;
+		bottom: 0px;
+
+		.sidebar-content {
+			padding: 30px 20px;
+
+			.navbar {
+				ul {
+					li {
+						&.active {
+							&:after {
+								bottom: -45px;
+								top: auto;
+								right: -35px;
+								left: auto;
+								transform: rotate(0deg);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

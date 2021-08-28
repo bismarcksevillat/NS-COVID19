@@ -1,0 +1,62 @@
+body {
+  background-color: #3b386d;
+}
+
+header {
+  background-color: #282155;
+  position: relative;
+}
+
+header .sidebar-content {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+header .sidebar-content .navbar {
+  padding: 0px;
+}
+
+header .sidebar-content .navbar ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+header .sidebar-content .navbar ul li {
+  position: relative;
+}
+
+header .sidebar-content .navbar ul li.active:after {
+  content: '';
+  background: url("../img/active.png") no-repeat center center;
+  width: 22px;
+  height: 104px;
+  position: absolute;
+  bottom: -68.5px;
+  top: auto;
+  right: 0px;
+  left: 0px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+@media (min-width: 768px) {
+  header {
+    position: fixed;
+    left: 0px;
+    right: auto;
+    top: 0px;
+    bottom: 0px;
+  }
+  header .sidebar-content {
+    padding: 30px 20px;
+  }
+  header .sidebar-content .navbar ul li.active:after {
+    bottom: -45px;
+    top: auto;
+    right: -35px;
+    left: auto;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+/*# sourceMappingURL=sidebar.css.map */

@@ -1,0 +1,31 @@
+body {
+  background-color: #3b386d;
+}
+
+.search-content {
+  padding: 50px 0px 25px;
+}
+
+.search-content h1 {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 37px;
+}
+
+.search-content .form-control {
+  padding: 10px;
+}
+
+.search-content .form-control input {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+.search-content .form-control input:placeholder-shown {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+/*# sourceMappingURL=search.css.map */
