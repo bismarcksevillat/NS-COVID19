@@ -36,7 +36,7 @@ const Search = ({
 
 	return (
 		<div className='search-content'>
-			<div className='container'>
+			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-12'>
 						<h1>Covid-19 Overview</h1>

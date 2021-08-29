@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { CONTINENTS } from '../../hooks/CONSTANT';
@@ -34,7 +35,7 @@ const ListData = ({ continent, countries }: ListDataProps) => {
 	);
 
 	const handleCollapse = () => {
-		setOpenContinent(prevState => !prevState)
+		setOpenContinent(prevState => !prevState);
 	};
 
 	return (
@@ -43,10 +44,19 @@ const ListData = ({ continent, countries }: ListDataProps) => {
 				<>
 					<div className='row mx-0'>
 						<div className='col-12'>
-							{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role */}
-							<h2 role="button" tabIndex={0} onClick={handleCollapse} onKeyDown={handleCollapse}>
+							<h2
+								role='button'
+								tabIndex={0}
+								onClick={handleCollapse}
+								onKeyDown={handleCollapse}
+							>
 								<b>
-									{continent} <i className={`fas fa-angle-down ${openContinent ? 'opened' : 'closed'}`} />
+									{continent}{' '}
+									<i
+										className={`fas fa-angle-down ${
+											openContinent ? 'opened' : 'closed'
+										}`}
+									/>
 								</b>
 							</h2>
 						</div>
@@ -116,21 +126,26 @@ const CountriesTable = ({
 
 	return (
 		<div className='countries-list'>
-			<div className='container'>
+			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-12 list-bg'>
-						<ListHeader />
-
-						<div className='custom-scroll'>
-							{CONTINENTS.map((continent, index) => (
-								<ListData
-									continent={continent}
-									countries={countries}
-									// eslint-disable-next-line react/no-array-index-key
-									key={`listData-${index}`}
-								/>
-							))}
-						</div>
+						{countries && countries.length > 0 ? (
+							<>
+								<ListHeader />
+								<div className='custom-scroll'>
+									{CONTINENTS.map((continent, index) => (
+										<ListData
+											continent={continent}
+											countries={countries}
+											// eslint-disable-next-line react/no-array-index-key
+											key={`listData-${index}`}
+										/>
+									))}
+								</div>{' '}
+							</>
+						) : (
+							<h6>No country data found with the search criteria</h6>
+						)}
 					</div>
 				</div>
 			</div>

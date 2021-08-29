@@ -1,6 +1,7 @@
 import React from 'react';
 import { UseStadisticsProps } from '../types';
 import CountriesTable from './components/CountriesTable';
+import DetailsPage from './components/DetailsPage';
 import Footer from './components/Footer';
 import Search from './components/Search';
 import Sidebar from './components/Sidebar';
@@ -16,10 +17,14 @@ const Home = ({ stadisticsData, fetchStadisticsData }: UseStadisticsProps) => (
 				fetchStadisticsData={fetchStadisticsData}
 			/>
 
-			<CountriesTable
-				stadisticsData={stadisticsData}
-				fetchStadisticsData={fetchStadisticsData}
-			/>
+			<div className='flex-container'>
+				<CountriesTable
+					stadisticsData={stadisticsData}
+					fetchStadisticsData={fetchStadisticsData}
+				/>
+
+				<DetailsPage />
+			</div>
 
 			<Footer />
 		</div>

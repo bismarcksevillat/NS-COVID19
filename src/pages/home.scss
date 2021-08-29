@@ -1,10 +1,23 @@
 .home-page {
 	position: relative;
 
-	@media(min-width: 768px){
-		.right-column{
+	@media (min-width: 768px) {
+		.right-column {
 			float: left;
 			padding-left: 120px;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: flex-start;
+
+			.country-detail, .countries-list {
+				flex: 1;
+			}
 		}
 	}
 }

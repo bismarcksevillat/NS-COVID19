@@ -1,0 +1,65 @@
+@import './general.scss';
+
+.country-detail {
+	.info-container {
+		background-color: rgba($black, 0.12);
+		padding: 20px 30px;
+    border-radius: 5px;
+
+		h2 {
+			color: $white;
+			font-size: 40px;
+			font-weight: 600;
+		}
+
+		p {
+			color: $white;
+
+			&.continent {
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+
+		.results-container {
+			padding-top: 50px;
+
+			.info-box {
+				p {
+					&.title {
+						font-size: 16px;
+						text-transform: uppercase;
+					}
+
+					&.number {
+						font-size: 36px;
+						font-weight: bold;
+
+						&.active {
+							color: $light-blue;
+						}
+
+						&.recovered {
+							color: $green-color;
+						}
+
+						&.deceased {
+							color: $pink-color;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+		.info-container {
+			.results-container {
+        .info-box{
+          flex: 1;
+          min-width: 50%;
+        }
+			}
+		}
+	}
+}

@@ -1,11 +1,19 @@
 @import './general.scss';
 
 .countries-list {
+	h6 {
+		color: $pink-color;
+		font-size: 35px;
+		text-align: center;
+		font-weight: bold;
+		padding: 20px 10px 0px;
+	}
+
 	.list-header {
 		background-color: rgba($black, 0.2);
 		padding: 8px 15px;
-		border-top-left-radius: 15px;
-		border-top-right-radius: 15px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
 
 		p {
 			font-weight: bold;
@@ -15,7 +23,7 @@
 	.list-bg {
 		text-align: center;
 		background-color: rgba($black, 0.2);
-		border-radius: 15px;
+		border-radius: 5px;
 		padding-bottom: 15px;
 
 		margin-left: 15px;
@@ -48,11 +56,11 @@
 			text-align: left;
 			// text-decoration: underline;
 
-			.fas{
+			.fas {
 				transform: rotate(0deg);
 				transition: transform 0.3s ease;
 
-				&.opened{
+				&.opened {
 					transform: rotate(-180deg);
 				}
 			}
@@ -76,7 +84,7 @@
 
 ::-webkit-scrollbar-thumb {
 	background-color: #d6dee1;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: 2px solid transparent;
 	background-clip: content-box;
 }
