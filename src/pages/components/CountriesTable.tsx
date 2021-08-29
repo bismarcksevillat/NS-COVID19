@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
+import { CONTINENTS } from '../../hooks/CONSTANT';
 import { useStadistics } from '../../hooks/useStadistics';
 import { ListDataProps, Response } from '../../types';
 import './countriestable.scss';
@@ -7,21 +8,21 @@ import './countriestable.scss';
 const commaNumber = require('comma-number');
 
 const ListHeader = (): JSX.Element => (
-	<div className='row list-header align-items-center'>
+	<div className='d-none d-lg-flex row list-header align-items-center'>
 		<div className='col-12 col-lg-3'>
-			<p className="mb-0">Country</p>
+			<p className='mb-0'>Country</p>
 		</div>
 
 		<div className='col-12 col-lg-3'>
-			<p className="mb-0">Confirmed</p>
+			<p className='mb-0'>Confirmed</p>
 		</div>
 
 		<div className='col-12 col-lg-3'>
-			<p className="mb-0">Population</p>
+			<p className='mb-0'>Population</p>
 		</div>
 
 		<div className='col-12 col-lg-3'>
-			<p className="mb-0">Last Updated</p>
+			<p className='mb-0'>Last Updated</p>
 		</div>
 	</div>
 );
@@ -30,33 +31,50 @@ const ListData = ({ continent, countries }: ListDataProps) => (
 	<>
 		<div className='row mx-0'>
 			<div className='col-12'>
-				<p>
+				<h2>
 					<b>{continent}</b>
-				</p>
+				</h2>
 			</div>
 		</div>
 
-		{countries?.map(country => (
-			<div className='row mx-0'>
-				<div className='col-12 col-lg-3'>
-					<p>{country.country}</p>
-				</div>
+		{countries
+			?.filter(country => country.continent === continent)
+			.map(country => (
+				// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+				<div
+					className='row mx-0 country'
+			
+					role='button'
+					tabIndex={0}
+				>
+					<div className='col-12 col-lg-3'>
+						<p>
+							<b className='d-lg-none'>Country:</b> {country.country}
+						</p>
+					</div>
 
-				<div className='col-12 col-lg-3'>
-					<p>{commaNumber(country.cases.total)}</p>
-				</div>
+					<div className='col-12 col-lg-3'>
+						<p>
+							<b className='d-lg-none'>Confirmed:</b>{' '}
+							{commaNumber(country.cases.total)}
+						</p>
+					</div>
 
-				<div className='col-12 col-lg-3'>
-					<p>{commaNumber(country.population)}</p>
-				</div>
+					<div className='col-12 col-lg-3'>
+						<p>
+							<b className='d-lg-none'>Population:</b>{' '}
+							{commaNumber(country.population)}
+						</p>
+					</div>
 
-				<div className='col-12 col-lg-3'>
-					<p>
-						<Moment format='MM/DD/YYYY HH:MM'>{country.time}</Moment>
-					</p>
+					<div className='col-12 col-lg-3'>
+						<p>
+							<b className='d-lg-none'>Last Updated:</b>{' '}
+							<Moment format='MM/DD/YYYY HH:MM'>{country.time}</Moment>
+						</p>
+					</div>
 				</div>
-			</div>
-		))}
+			))}
 	</>
 );
 
@@ -94,9 +112,9 @@ const CountriesTable = () => {
 						<ListHeader />
 
 						<div className='custom-scroll'>
-		
-								<ListData continent='Ninon' countries={countries} />
-	
+							{CONTINENTS.map(continent => (
+								<ListData continent={continent} countries={countries} />
+							))}
 						</div>
 					</div>
 				</div>
