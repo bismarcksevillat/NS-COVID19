@@ -14,10 +14,10 @@
 	.form-control {
 		padding: 0px;
 		position: relative;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: none;
+		background-color: rgba(0, 0, 0, 0.3);
+		border: none;
 
-		&:focus{
+		&:focus {
 			color: $white;
 		}
 
@@ -33,23 +33,33 @@
 			bottom: auto;
 		}
 
+		span {
+			&.rah-hint-wrapper {
+				color: red;
+			}
+		}
+
 		input {
 			padding: 10px 50px 10px 20px;
 			margin: 0px;
 			border: none;
 			position: relative;
 			color: $white;
-			
-			&::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+			background-color: $white;
+
+			&::placeholder {
+				/* Chrome, Firefox, Opera, Safari 10.1+ */
 				color: rgba($white, 0.5);
 				opacity: 1; /* Firefox */
 			}
-			
-			&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+			&:-ms-input-placeholder {
+				/* Internet Explorer 10-11 */
 				color: rgba($white, 0.5);
 			}
-			
-			&::-ms-input-placeholder { /* Microsoft Edge */
+
+			&::-ms-input-placeholder {
+				/* Microsoft Edge */
 				color: rgba($white, 0.5);
 			}
 		}

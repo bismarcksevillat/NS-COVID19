@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Hint } from 'react-autocomplete-hint';
+import useCountries from '../../hooks/useCountries';
 import { UseStadisticsProps } from '../../types';
 import './search.scss';
 
@@ -6,6 +8,8 @@ const Search = ({
 	stadisticsData,
 	fetchStadisticsData,
 }: UseStadisticsProps) => {
+	const { countriesData, fetchCountriesData } = useCountries();
+	const [hintData, setHintData] = useState<string[]>([]);
 	const [searchCriteria, setSearchCriteria] = useState('');
 	const inputRef = useRef(null);
 
@@ -23,8 +27,12 @@ const Search = ({
 	}, [searchCriteria]);
 
 	useEffect(() => {
-		console.log(stadisticsData);
-	}, [stadisticsData]);
+		fetchCountriesData();
+	}, []);
+
+	useEffect(() => {
+		setHintData(['bembor', 'mariso', 'lucia', 'king']);
+	}, []);
 
 	return (
 		<div className='search-content'>
@@ -34,14 +42,16 @@ const Search = ({
 						<h1>Covid-19 Overview</h1>
 
 						<form className='form-control mt-3'>
-							<input
-								ref={inputRef}
-								type='text'
-								placeholder='Search Country'
-								className='form-control'
-								value={searchCriteria}
-								onChange={inputOnChange}
-							/>
+							<Hint options={hintData} allowTabFill>
+								<input
+									ref={inputRef}
+									type='text'
+									placeholder='Search Country'
+									className='form-control'
+									value={searchCriteria}
+									onChange={inputOnChange}
+								/>
+							</Hint>
 						</form>
 					</div>
 				</div>
