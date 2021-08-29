@@ -17,6 +17,10 @@
     background-color: rgba(0, 0, 0, 0.3);
     border: none;
 
+		&:focus{
+			color: $white;
+		}
+
 		&:after {
 			content: '';
 			height: 20px;
@@ -34,7 +38,20 @@
 			margin: 0px;
 			border: none;
 			position: relative;
-			color: $white
+			color: $white;
+			
+			&::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+				color: rgba($white, 0.5);
+				opacity: 1; /* Firefox */
+			}
+			
+			&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+				color: rgba($white, 0.5);
+			}
+			
+			&::-ms-input-placeholder { /* Microsoft Edge */
+				color: rgba($white, 0.5);
+			}
 		}
 	}
 

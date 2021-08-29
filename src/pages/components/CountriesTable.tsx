@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { CONTINENTS } from '../../hooks/CONSTANT';
-import { useStadistics } from '../../hooks/useStadistics';
 import { ListDataProps, Response, UseStadisticsProps } from '../../types';
 import './countriestable.scss';
 
@@ -28,59 +27,71 @@ const ListHeader = (): JSX.Element => (
 );
 
 const ListData = ({ continent, countries }: ListDataProps) => {
+	const [openContinent, setOpenContinent] = useState(false);
+
 	const countriesByContinent = countries?.filter(
 		country => country.continent === continent,
 	);
 
+	const handleCollapse = () => {
+		setOpenContinent(prevState => !prevState)
+	};
+
 	return (
 		<>
 			{countriesByContinent && countriesByContinent.length > 0 && (
-				<div className='row mx-0'>
-					<div className='col-12'>
-						<h2>
-							<b>{continent}</b>
-						</h2>
+				<>
+					<div className='row mx-0'>
+						<div className='col-12'>
+							{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role */}
+							<h2 role="button" tabIndex={0} onClick={handleCollapse} onKeyDown={handleCollapse}>
+								<b>
+									{continent} <i className={`fas fa-angle-down ${openContinent ? 'opened' : 'closed'}`} />
+								</b>
+							</h2>
+						</div>
 					</div>
-				</div>
+
+					{openContinent &&
+						countriesByContinent &&
+						countriesByContinent.map(country => (
+							// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+							<div
+								className='row mx-0 country'
+								role='button'
+								tabIndex={0}
+								key={country.country}
+							>
+								<div className='col-12 col-lg-3'>
+									<p>
+										<b className='d-lg-none'>Country:</b> {country.country}
+									</p>
+								</div>
+
+								<div className='col-12 col-lg-3'>
+									<p>
+										<b className='d-lg-none'>Confirmed:</b>{' '}
+										{commaNumber(country.cases.total)}
+									</p>
+								</div>
+
+								<div className='col-12 col-lg-3'>
+									<p>
+										<b className='d-lg-none'>Population:</b>{' '}
+										{commaNumber(country.population)}
+									</p>
+								</div>
+
+								<div className='col-12 col-lg-3'>
+									<p>
+										<b className='d-lg-none'>Last Updated:</b>{' '}
+										<Moment format='MM/DD/YYYY HH:MM'>{country.time}</Moment>
+									</p>
+								</div>
+							</div>
+						))}
+				</>
 			)}
-
-			{countriesByContinent &&
-				countriesByContinent.map(country => (
-					// eslint-disable-next-line jsx-a11y/click-events-have-key-events
-					<div
-						className='row mx-0 country'
-						role='button'
-						tabIndex={0}
-						key={country.country}
-					>
-						<div className='col-12 col-lg-3'>
-							<p>
-								<b className='d-lg-none'>Country:</b> {country.country}
-							</p>
-						</div>
-
-						<div className='col-12 col-lg-3'>
-							<p>
-								<b className='d-lg-none'>Confirmed:</b>{' '}
-								{commaNumber(country.cases.total)}
-							</p>
-						</div>
-
-						<div className='col-12 col-lg-3'>
-							<p>
-								<b className='d-lg-none'>Population:</b>{' '}
-								{commaNumber(country.population)}
-							</p>
-						</div>
-
-						<div className='col-12 col-lg-3'>
-							<p>
-								<b className='d-lg-none'>Last Updated:</b>{' '}
-								<Moment format='MM/DD/YYYY HH:MM'>{country.time}</Moment>
-							</p>
-						</div>
-					</div>
-				))}
 		</>
 	);
 };
@@ -93,16 +104,11 @@ const CountriesTable = ({
 
 	useEffect(() => {
 		const orderedCountries = stadisticsData?.response.sort((a, b) => {
-			if (
-				a == null ||
-				b == null ||
-				a.continent == null ||
-				b.continent == null
-			) {
+			if (a == null || b == null || a.country == null || b.country == null) {
 				return 0;
 			}
 
-			return a.continent.localeCompare(b.continent);
+			return a.country.localeCompare(b.country);
 		});
 
 		setCountries(orderedCountries);

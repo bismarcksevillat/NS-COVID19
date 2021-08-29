@@ -47,6 +47,14 @@ export interface DataResponse {
 	response: Response[];
 }
 
+export interface DataResponseCountries {
+	get: string;
+	parameters: any[];
+	errors: any[];
+	results: number;
+	response: string[];
+}
+
 export interface Parameters {
 	country: string;
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useStadistics } from '../../hooks/useStadistics';
 import { UseStadisticsProps } from '../../types';
 import './search.scss';
 
