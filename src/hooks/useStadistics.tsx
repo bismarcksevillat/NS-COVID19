@@ -9,8 +9,10 @@ export const useStadistics = () => {
 		null,
 	);
 
-	const fetchStadisticsData = async (countryName: string | null) => {
+	const fetchStadisticsData = async (countryNameParam: string) => {
 		try {
+			const countryName = countryNameParam !== '' ? countryNameParam : null;
+			
 			const apiResult = await axios.get(`${API_BASE}/statistics`, {
 				params: {
 					country: countryName,

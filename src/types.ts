@@ -3,6 +3,11 @@ export interface ListDataProps {
 	countries: Response[] | undefined;
 }
 
+export interface UseStadisticsProps {
+	stadisticsData: DataResponse | null;
+	fetchStadisticsData: Function;
+}
+
 export interface Cases {
 	new: string;
 	active?: number;
