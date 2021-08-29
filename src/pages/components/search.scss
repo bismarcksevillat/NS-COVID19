@@ -33,9 +33,9 @@
 			bottom: auto;
 		}
 
-		span {
-			&.rah-hint-wrapper {
-				color: red;
+		.rah-hint-wrapper {
+			.rah-hint {
+				color: rgba($white, 0.5) !important;
 			}
 		}
 
@@ -45,7 +45,6 @@
 			border: none;
 			position: relative;
 			color: $white;
-			background-color: $white;
 
 			&::placeholder {
 				/* Chrome, Firefox, Opera, Safari 10.1+ */

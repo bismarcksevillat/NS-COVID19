@@ -31,8 +31,8 @@ const Search = ({
 	}, []);
 
 	useEffect(() => {
-		setHintData(['bembor', 'mariso', 'lucia', 'king']);
-	}, []);
+		if (countriesData) setHintData(countriesData?.response || []);
+	}, [countriesData]);
 
 	return (
 		<div className='search-content'>
