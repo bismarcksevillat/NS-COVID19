@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import useStadisticsAll from '../../hooks/useStadisticsAll';
-
+import { useStadisticsAll } from '../../hooks/useStadistics';
 import './footer.scss';
 
 const commaNumber = require('comma-number');
 
 const Footer = () => {
-	const { fetchData, data } = useStadisticsAll();
+	const { stadisticsAllData, fetchStadisticsAllData } = useStadisticsAll();
 	const [totalConfirm, setTotalConfirm] = useState<string | null>(null);
 	const [totalActive, setTotalActive] = useState<string | null>(null);
 	const [totalRecovered, setTotalRecovered] = useState<string | null>(null);
 	const [totalDeath, setTotalDeath] = useState<string | null>(null);
 
 	useEffect(() => {
-		fetchData();
+		fetchStadisticsAllData();
 	}, []);
 
 	useEffect(() => {
-		if (data) {
-			setTotalConfirm(commaNumber(data.response[0].cases.total));
-			setTotalActive(commaNumber(data.response[0].cases.active));
-			setTotalRecovered(commaNumber(data.response[0].cases.recovered));
-			setTotalDeath(commaNumber(data.response[0].deaths.total));
+		if (stadisticsAllData) {
+			setTotalConfirm(commaNumber(stadisticsAllData.response[0].cases.total));
+			setTotalActive(commaNumber(stadisticsAllData.response[0].cases.active));
+			setTotalRecovered(
+				commaNumber(stadisticsAllData.response[0].cases.recovered),
+			);
+			setTotalDeath(commaNumber(stadisticsAllData.response[0].deaths.total));
 		}
-	}, [data]);
+	}, [stadisticsAllData]);
 
 	return (
 		<footer>
@@ -33,25 +34,33 @@ const Footer = () => {
 						<h2 className='mb-3'>Global Overview</h2>
 
 						<div className='global-info-container d-md-flex justify-content-between align-items-center flex-wrap'>
-							<div className='info-box'>
-								<p className='title'>Confirmed</p>
-								<p className='number'>{totalConfirm}</p>
-							</div>
+							{totalConfirm && (
+								<div className='info-box'>
+									<p className='title'>Confirmed</p>
+									<p className='number'>{totalConfirm}</p>
+								</div>
+							)}
 
-							<div className='info-box'>
-								<p className='title active-title'>Active</p>
-								<p className='number'>{totalActive}</p>
-							</div>
+							{totalActive && (
+								<div className='info-box'>
+									<p className='title active-title'>Active</p>
+									<p className='number'>{totalActive}</p>
+								</div>
+							)}
 
-							<div className='info-box'>
-								<p className='title recovered-title'>Recovered</p>
-								<p className='number'>{totalRecovered}</p>
-							</div>
+							{totalRecovered && (
+								<div className='info-box'>
+									<p className='title recovered-title'>Recovered</p>
+									<p className='number'>{totalRecovered}</p>
+								</div>
+							)}
 
-							<div className='info-box'>
-								<p className='title deceased-title'>Deceased</p>
-								<p className='number'>{totalDeath}</p>
-							</div>
+							{totalDeath && (
+								<div className='info-box'>
+									<p className='title deceased-title'>Deceased</p>
+									<p className='number'>{totalDeath}</p>
+								</div>
+							)}
 
 							<div className='info-box stay-home'>
 								<p>

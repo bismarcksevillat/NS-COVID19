@@ -1,6 +1,6 @@
 export interface ListDataProps {
 	continent: string;
-	country: string;
+	countries: Response[] | undefined;
 }
 
 export interface Cases {
