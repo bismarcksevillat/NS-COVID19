@@ -140,10 +140,13 @@ const CountriesTable = ({
 											key={`listData-${index}`}
 										/>
 									))}
-								</div>{' '}
+								</div>
 							</>
 						) : (
-							<h6>No country data found with the search criteria</h6>
+							stadisticsData &&
+							!Array.isArray(stadisticsData?.parameters) && (
+								<h6>No country found with the search criteria</h6>
+							)
 						)}
 					</div>
 				</div>

@@ -16,7 +16,7 @@ const DetailsPage = () => {
 	}, [countryName]);
 
 	return (
-		<div className='country-detail'>
+		<div className='country-detail' id="details">
 			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-12'>
