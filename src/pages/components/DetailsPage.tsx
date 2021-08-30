@@ -20,7 +20,10 @@ const DetailsPage = () => {
 			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-12'>
+					{ (stadisticsData && stadisticsData.response.length > 0) ? (
 						<div className='info-container'>
+
+							
 							<h2>{stadisticsData?.response[0].country}</h2>
 							<p className='continent'>
 								{stadisticsData?.response[0].continent}
@@ -61,6 +64,8 @@ const DetailsPage = () => {
 								</div>
 							</div>
 						</div>
+					) : (<h2>Country details information not found</h2>)
+					}
 					</div>
 				</div>
 			</div>
