@@ -5,6 +5,37 @@
 		.right-column {
 			float: left;
 			padding-left: 120px;
+			position: relative;
+
+			&:before {
+				content: '';
+				background-image: url('img/x-icon.png');
+				background-repeat: no-repeat;
+				background-size: contain;
+				width: 128px;
+				height: 128px;
+				z-index: -1;
+				position: absolute;
+				left: 50px;
+				right: auto;
+				top: 200px;
+				bottom: auto;
+			}
+
+			&:after {
+				content: '';
+				background-image: url('img/stripes.png');
+				background-repeat: no-repeat;
+				background-size: contain;
+				width: 130px;
+				height: 223px;
+				z-index: -1;
+				position: absolute;
+				left: auto;
+				right: 10px;
+				top: calc(50% - 220px);
+				bottom: auto;
+			}
 		}
 	}
 
@@ -15,7 +46,8 @@
 			justify-content: flex-start;
 			align-items: flex-start;
 
-			.country-detail, .countries-list {
+			.country-detail,
+			.countries-list {
 				flex: 1;
 			}
 		}

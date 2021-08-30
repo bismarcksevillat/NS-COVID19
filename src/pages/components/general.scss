@@ -3,11 +3,12 @@
 body {
 	background-color: #3b386d;
 	font-family: 'Poppins', sans-serif;
+
+	@media(min-width: 768px){
+		background: url('../img/upper-blob-icon.png') #3b386d no-repeat top right 30%;
+	}
 }
 
-.container{
-	// max-width: 1800px;
-}
 
 $white: #ffffff;
 $black: #000000;

@@ -3,6 +3,7 @@
 header {
 	background-color: $secondary-color;
 	position: relative;
+	z-index: 10;
 
 	.sidebar-content {
 		padding: 10px 20px;
