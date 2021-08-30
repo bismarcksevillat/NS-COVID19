@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 import { CONTINENTS } from '../../hooks/CONSTANT';
 import { ListDataProps, Response, UseStadisticsProps } from '../../types';
 import './countriestable.scss';
@@ -66,11 +67,9 @@ const ListData = ({ continent, countries }: ListDataProps) => {
 						countriesByContinent &&
 						countriesByContinent.map(country => (
 							// eslint-disable-next-line jsx-a11y/click-events-have-key-events
-							<div
+							<Link
 								className='row mx-0 country'
-								role='button'
-								tabIndex={0}
-								key={country.country}
+								to={`/country/${country.country}`}
 							>
 								<div className='col-12 col-lg-3'>
 									<p>
@@ -98,7 +97,7 @@ const ListData = ({ continent, countries }: ListDataProps) => {
 										<Moment format='MM/DD/YYYY HH:MM'>{country.time}</Moment>
 									</p>
 								</div>
-							</div>
+							</Link>
 						))}
 				</>
 			)}

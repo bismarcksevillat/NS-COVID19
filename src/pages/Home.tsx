@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { UseStadisticsProps } from '../types';
 import CountriesTable from './components/CountriesTable';
 import DetailsPage from './components/DetailsPage';
@@ -18,12 +19,18 @@ const Home = ({ stadisticsData, fetchStadisticsData }: UseStadisticsProps) => (
 			/>
 
 			<div className='flex-container'>
-				<CountriesTable
-					stadisticsData={stadisticsData}
-					fetchStadisticsData={fetchStadisticsData}
-				/>
+				<Router>
+					<CountriesTable
+						stadisticsData={stadisticsData}
+						fetchStadisticsData={fetchStadisticsData}
+					/>
 
-				<DetailsPage />
+					<Switch>
+						<Route path='/country/:countryName'>
+							<DetailsPage />
+						</Route>
+					</Switch>
+				</Router>
 			</div>
 
 			<Footer />
