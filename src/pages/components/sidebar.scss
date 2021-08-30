@@ -1,5 +1,23 @@
 @import './general.scss';
 
+@-webkit-keyframes logorotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes logorotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 header {
 	background-color: $secondary-color;
 	position: relative;
@@ -8,6 +26,15 @@ header {
 	.sidebar-content {
 		padding: 10px 20px;
 		text-align: center;
+
+		.logo-container {
+			a {
+				img {
+					-webkit-animation: logorotation 5s infinite alternate;
+					animation: logorotation 5s infinite alternate;
+				}
+			}
+		}
 
 		.navbar {
 			padding: 0px;
