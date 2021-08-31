@@ -3,7 +3,7 @@ import { useStadistics } from './hooks/useStadistics';
 import Home from './pages/Home';
 
 function App() {
-	const { stadisticsData, fetchStadisticsData } = useStadistics();
+	const { stadisticsData, fetchStadisticsData, isLoading } = useStadistics();
 
 	useEffect(() => {
 		fetchStadisticsData('');
@@ -14,6 +14,7 @@ function App() {
 			<Home
 				stadisticsData={stadisticsData}
 				fetchStadisticsData={fetchStadisticsData}
+				isLoading={isLoading}
 			/>
 		</div>
 	);

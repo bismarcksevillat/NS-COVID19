@@ -1,5 +1,11 @@
 @import './general.scss';
 
 .not-found {
-	min-height: 50vh;
+	@media (min-width: 768px) {
+		min-height: 50vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 }

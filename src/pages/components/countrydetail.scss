@@ -4,7 +4,7 @@
 	.info-container {
 		background-color: rgba($black, 0.12);
 		padding: 20px 30px;
-    border-radius: 5px;
+		border-radius: 5px;
 
 		h2 {
 			color: $white;
@@ -55,11 +55,32 @@
 	@media (min-width: 768px) {
 		.info-container {
 			.results-container {
-        .info-box{
-          flex: 1;
-          min-width: 50%;
-        }
+				.info-box {
+					flex: 1;
+					min-width: 50%;
+				}
 			}
 		}
+	}
+}
+
+.details-error {
+	background-color: rgba($black, 0.12);
+	padding: 20px 30px;
+	border-radius: 5px;
+
+	h2 {
+		color: $white;
+		font-size: 30px;
+		font-weight: 600;
+	}
+
+	.img-container {
+		max-width: 400px;
+		margin: 0 auto;
+	}
+
+	@media(min-width: 1200px){
+		min-height: 560px;
 	}
 }

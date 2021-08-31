@@ -46,6 +46,30 @@
 			position: relative;
 			color: $white;
 
+			&::-webkit-input-placeholder {
+				/* Chrome, Firefox, Opera, Safari 10.1+ */
+				color: rgba($white, 0.5);
+				opacity: 1; /* Firefox */
+			}
+
+			&::-moz-placeholder {
+				/* Chrome, Firefox, Opera, Safari 10.1+ */
+				color: rgba($white, 0.5);
+				opacity: 1; /* Firefox */
+			}
+
+			&:-ms-input-placeholder {
+				/* Chrome, Firefox, Opera, Safari 10.1+ */
+				color: rgba($white, 0.5);
+				opacity: 1; /* Firefox */
+			}
+
+			&::-ms-input-placeholder {
+				/* Chrome, Firefox, Opera, Safari 10.1+ */
+				color: rgba($white, 0.5);
+				opacity: 1; /* Firefox */
+			}
+
 			&::placeholder {
 				/* Chrome, Firefox, Opera, Safari 10.1+ */
 				color: rgba($white, 0.5);

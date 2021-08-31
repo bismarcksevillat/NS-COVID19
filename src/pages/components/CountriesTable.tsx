@@ -107,7 +107,7 @@ const ListData = ({ continent, countries }: ListDataProps) => {
 
 const CountriesTable = ({
 	stadisticsData,
-	fetchStadisticsData,
+	fetchStadisticsData, isLoading
 }: UseStadisticsProps) => {
 	const [countries, setCountries] = useState<Response[] | undefined>(undefined);
 
@@ -128,6 +128,8 @@ const CountriesTable = ({
 			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-12 list-bg'>
+						
+						
 						{countries && countries.length > 0 ? (
 							<>
 								<ListHeader />

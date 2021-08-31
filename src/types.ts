@@ -6,6 +6,7 @@ export interface ListDataProps {
 export interface UseStadisticsProps {
 	stadisticsData: DataResponse | null;
 	fetchStadisticsData: Function;
+	isLoading?: boolean;
 }
 
 export interface Cases {

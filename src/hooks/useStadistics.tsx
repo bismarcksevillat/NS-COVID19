@@ -9,10 +9,14 @@ export const useStadistics = () => {
 		null,
 	);
 
+	const [isLoading, setIsLoading] = useState(false);
+
 	const fetchStadisticsData = async (countryNameParam: string) => {
 		try {
+			setIsLoading(true);
+
 			const countryName = countryNameParam !== '' ? countryNameParam : null;
-			
+
 			const apiResult = await axios.get(`${API_BASE}/statistics`, {
 				params: {
 					country: countryName,
@@ -24,7 +28,9 @@ export const useStadistics = () => {
 			});
 
 			setStadisticsData(apiResult.data);
+			setIsLoading(false);
 		} catch (error) {
+			setIsLoading(false);
 			console.error('Error getting info: ', error);
 		}
 	};
@@ -32,6 +38,7 @@ export const useStadistics = () => {
 	return {
 		stadisticsData,
 		fetchStadisticsData,
+		isLoading
 	};
 };
 

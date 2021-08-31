@@ -9,7 +9,7 @@ import Search from './components/Search';
 import Sidebar from './components/Sidebar';
 import './home.scss';
 
-const Home = ({ stadisticsData, fetchStadisticsData }: UseStadisticsProps) => (
+const Home = ({ stadisticsData, fetchStadisticsData, isLoading }: UseStadisticsProps) => (
 	<div className='home-page'>
 		<Sidebar />
 
@@ -24,6 +24,7 @@ const Home = ({ stadisticsData, fetchStadisticsData }: UseStadisticsProps) => (
 						<CountriesTable
 							stadisticsData={stadisticsData}
 							fetchStadisticsData={fetchStadisticsData}
+							isLoading={isLoading}
 						/>
 					</Route>
 
